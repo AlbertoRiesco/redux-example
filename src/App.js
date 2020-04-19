@@ -9,7 +9,7 @@ function App() {
   return (
     <Provider store={store}>
       <Button1 />
-      <Button2 />
+      <Button2 originalProp={true} />
       <Atmosphere />
     </Provider>
   );

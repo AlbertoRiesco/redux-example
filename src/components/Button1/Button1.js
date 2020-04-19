@@ -3,12 +3,6 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { SET_POSITION } from '../../redux/ducks/atmosphere';
 
-const Container = styled.div`
-    position: relative;
-    width: 300px;
-    margin: 0 auto;
-    border: 2px solid blue;
-`;
 
 const Button1 = ({ layerPosition, topPosition, dispatch }) => {
     const handleClick = () => {
