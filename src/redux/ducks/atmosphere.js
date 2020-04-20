@@ -1,3 +1,4 @@
+import { AsyncCall } from '../../mocks/AsyncCall'
 // initial value
 const initialValue = {
     atmosphereLayers: ['Troposfera', 'Estratosfera', 'Mesosfera', 'Ionosfera', 'Exosfera'],
@@ -17,8 +18,19 @@ export default function reducer(state = initialValue, action = {}) {
   }
 }
 
-// creador de acciones
-export function changeAtmosphereLayerPosition(position,xx) {
-  console.log(xx);
+// action creators
+export function changeAtmosphereLayerPosition(position, xxx) {
+  console.log(xxx);
   return { type: SET_POSITION, payload: position };
+}
+
+// thunks
+export function asyncChangeAtmosphereLayerPosition(position) {
+  return (dispatch, getState) => {
+    new AsyncCall()
+    .customAction({ position })
+    .then(res => {
+      dispatch(changeAtmosphereLayerPosition(res));
+    })
+  }
 }
