@@ -1,17 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { asyncChangeAtmosphereLayerPosition } from '../../redux/ducks/atmosphere';
+import { asyncSetAtmosphereLayerPosition } from '../../redux/ducks/atmosphere';
 
 
-const Button = ({ layerPosition, topPosition, dispatch }) => {
+const Button = ({ atmosphereLayerPosition, atmosphereLayers, dispatch }) => {
+    const topPosition = atmosphereLayers.length - 1;
     const handleClick = () => {
-        let position = layerPosition + 1;
+        let position = atmosphereLayerPosition + 1;
 
-        if (topPosition === layerPosition) {
+        if (topPosition === atmosphereLayerPosition) {
             position = 0;
         }
         
-        asyncChangeAtmosphereLayerPosition(position)(dispatch);
+        asyncSetAtmosphereLayerPosition(position)(dispatch);
     }
     
     return (
@@ -19,7 +20,14 @@ const Button = ({ layerPosition, topPosition, dispatch }) => {
     );
 };
 
-const mapStateToProps = (state) => ({layerPosition: state.atmosphereReducer.atmosphereLayerPosition, topPosition: state.atmosphereReducer.atmosphereLayers.length - 1});
+const mapStateToProps = (state) => {
+    const { atmosphereLayerPosition, atmosphereLayers } = state.atmosphereReducer;
+
+    return {
+        atmosphereLayerPosition, 
+        atmosphereLayers
+    }
+};
 
 const ConnectedButton = connect(mapStateToProps)(Button);
 

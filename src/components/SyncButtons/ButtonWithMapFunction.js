@@ -1,22 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeAtmosphereLayerPosition } from '../../redux/ducks/atmosphere';
+import { setAtmosphereLayerPosition } from '../../redux/ducks/atmosphere';
 
-const Button = ({ layerPosition, topPosition, onClick }) => {
-    let position = layerPosition + 1;
+const Button = ({ atmosphereLayerPosition, atmosphereLayers, handleClick }) => {
+    const topPosition = atmosphereLayers.length - 1;
+    let position = atmosphereLayerPosition + 1;
 
-    if (topPosition === layerPosition) {
+    if (topPosition === atmosphereLayerPosition) {
         position = 0;
     }
 
     return (
-        <button onClick={onClick(position)}>Next layer (map dispatch func)</button>
+        <button onClick={handleClick(position)}>Next layer (map dispatch func)</button>
     );
 };
 
-const mapStateToProps = (state) => ({layerPosition: state.atmosphereReducer.atmosphereLayerPosition, topPosition: state.atmosphereReducer.atmosphereLayers.length - 1});
+const mapStateToProps = (state) => {
+    const { atmosphereLayerPosition, atmosphereLayers } = state.atmosphereReducer;
+
+    return {
+        atmosphereLayerPosition, 
+        atmosphereLayers
+    }
+};
+
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    onClick: (position) => (event) => dispatch(changeAtmosphereLayerPosition(position))
+    handleClick: (position) => (event) => dispatch(setAtmosphereLayerPosition(position))
 });
 
 const ConnectedButton = connect(mapStateToProps, mapDispatchToProps)(Button);

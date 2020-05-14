@@ -19,18 +19,18 @@ export default function reducer(state = initialValue, action = {}) {
 }
 
 // action creators
-export function changeAtmosphereLayerPosition(position, xxx) {
-  console.log(xxx);
-  return { type: SET_POSITION, payload: position };
+export function setAtmosphereLayerPosition(payload) {
+  console.log(payload);
+  return { type: SET_POSITION, payload };
 }
 
 // thunks
-export function asyncChangeAtmosphereLayerPosition(position) {
+export function asyncSetAtmosphereLayerPosition(position) {
   return (dispatch, getState) => {
     new AsyncCall()
     .customAction({ position })
     .then(res => {
-      dispatch(changeAtmosphereLayerPosition(res));
+      dispatch(setAtmosphereLayerPosition(res));
     })
   }
 }
