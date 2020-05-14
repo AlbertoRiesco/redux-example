@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setAtmosphereLayerPosition } from '../../redux/ducks/atmosphere';
-
+import { StyledButton } from '../StyledButton/StyledButton';
 
 const Button = ({ atmosphereLayerPosition, atmosphereLayers, dispatch }) => {
     const topPosition = atmosphereLayers.length - 1;
@@ -16,7 +16,12 @@ const Button = ({ atmosphereLayerPosition, atmosphereLayers, dispatch }) => {
     }
     
     return (
-        <button onClick={handleClick}>Next layer (without map dispatch)</button>
+        <StyledButton 
+        onClick={handleClick}
+            label='without map dispatch'
+        >
+            Next layer (pos: { atmosphereLayerPosition })
+        </StyledButton>
     );
 };
 
