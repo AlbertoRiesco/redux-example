@@ -38,10 +38,12 @@ export function setAtmosphereLayerPosition(payload) {
 }
 
 // thunks
-export function asyncSetAtmosphereLayerPosition(position) {
+export function asyncSetAtmosphereLayerNextPosition(tokenId) {
   return (dispatch, getState) => {
+    const { atmosphereLayerPosition, atmosphereLayers } = getState().atmosphereReducer;
+
     new AsyncCall()
-    .customAction({ position })
+    .customAction({ atmosphereLayerPosition, atmosphereLayers, tokenId })
     .then(res => {
       dispatch(setAtmosphereLayerPosition(res));
     })

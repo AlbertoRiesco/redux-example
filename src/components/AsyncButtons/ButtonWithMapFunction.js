@@ -1,19 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { asyncSetAtmosphereLayerPosition } from '../../redux/ducks/atmosphere';
+import { asyncSetAtmosphereLayerNextPosition } from '../../redux/ducks/atmosphere';
 import { StyledButton } from '../StyledButton/StyledButton';
 
-const Button = ({ atmosphereLayerPosition, atmosphereLayers, asyncSetAtmosphereLayerPosition }) => {
-    const topPosition = atmosphereLayers.length - 1;
-    let position = atmosphereLayerPosition + 1;
-
-    if (topPosition === atmosphereLayerPosition) {
-        position = 0;
-    }
+const Button = ({ atmosphereLayerPosition, asyncSetAtmosphereLayerNextPosition }) => {
+    const tokenId = '123123';
 
     return (
         <StyledButton 
-            onClick={asyncSetAtmosphereLayerPosition(position)}
+            onClick={asyncSetAtmosphereLayerNextPosition(tokenId)}
             label='map dispatch func'
         >
             Next layer (pos: { atmosphereLayerPosition })
@@ -22,18 +17,17 @@ const Button = ({ atmosphereLayerPosition, atmosphereLayers, asyncSetAtmosphereL
 };
 
 const mapStateToProps = (state) => {
-    const { atmosphereLayerPosition, atmosphereLayers } = state.atmosphereReducer;
+    const { atmosphereLayerPosition, } = state.atmosphereReducer;
 
     return {
-        atmosphereLayerPosition, 
-        atmosphereLayers
+        atmosphereLayerPosition
     }
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        asyncSetAtmosphereLayerPosition: (position) => (event) => {
-            dispatch(asyncSetAtmosphereLayerPosition(position)); //without thunk asyncSetAtmosphereLayerPosition(position)(dispatch)
+        asyncSetAtmosphereLayerNextPosition: (tokenId) => (event) => {
+            dispatch(asyncSetAtmosphereLayerNextPosition(tokenId)); //without thunk asyncSetAtmosphereLayerPosition(position)(dispatch)
         }
     };
 };
