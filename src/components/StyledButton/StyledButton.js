@@ -16,14 +16,17 @@ const Label = styled.span`
     font-family: sans-serif;
     display: inline-block;
     margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #777777;
 `;
 
 const ButtonWithStyles = styled.button`
-    background: DarkOrange;
+    background: #2c70ae;
+    color: white;
+    border: none;
     font-weight: 900;
-    border: 2px solid black;
-    border-radius: 2em;
-    padding: 10px;
+    padding: 12px;
     display: inline-block;
     font-family: sans-serif;
     text-transform: uppercase;

@@ -13,6 +13,10 @@ import { store } from './redux/store/store';
 import styled from 'styled-components';
 
 const Container = styled.div`
+    padding-top: 60px;
+`;
+
+const Section = styled.div`
     max-width: 700px;
     margin: 0 auto;
     margin-bottom: 42px;
@@ -20,7 +24,11 @@ const Container = styled.div`
 
 const Title = styled.h2`
     font-family: sans-serif;
+    font-size: 28px;
     margin-top: 0;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    font-weight: bolder;
 `;
 
 function App() {
@@ -28,29 +36,31 @@ function App() {
         
             <Provider store={store}>
                 <Container>
-                    <div>
-                        <Title>Simple Case</Title>
-                        <WithHooksButton />
-                        <WithoutHooksButton />
-                    </div>
+                    <Section>
+                        <div>
+                            <Title>Simple Case</Title>
+                            <WithHooksButton />
+                            <WithoutHooksButton />
+                        </div>
+                    </Section>
+                    <Section>
+                        <div>
+                            <Title>Sync Buttons</Title>
+                            <ButtonWithoutMap />
+                            <ButtonWithMapFunction originalProp={true} />
+                            <ButtonWithMapObject originalProp={true} />
+                        </div>
+                    </Section>
+                    <Section>
+                        <div>
+                            <Title>Async Buttons</Title>
+                            <AsyncButtonWithoutMap />
+                            <AsyncButtonWithMapFunction originalProp={true} />
+                            <AsyncButtonWithMapObject originalProp={true} />
+                        </div>
+                    </Section>
+                    <Atmosphere />
                 </Container>
-                <Container>
-                    <div>
-                        <Title>Sync Buttons</Title>
-                        <ButtonWithoutMap />
-                        <ButtonWithMapFunction originalProp={true} />
-                        <ButtonWithMapObject originalProp={true} />
-                    </div>
-                </Container>
-                <Container>
-                    <div>
-                        <Title>Async Buttons</Title>
-                        <AsyncButtonWithoutMap />
-                        <AsyncButtonWithMapFunction originalProp={true} />
-                        <AsyncButtonWithMapObject originalProp={true} />
-                    </div>
-                </Container>
-                <Atmosphere />
             </Provider>
     );
 }

@@ -7,7 +7,6 @@ const Container = styled.div`
     position: relative;
     width: 300px;
     margin: 0 auto;
-    border: 2px solid blue;
 `;
 
 const Image = styled.img`
@@ -20,7 +19,7 @@ const Layer = styled.div`
     font-family: sans-serif;
     font-size: 14px;
     font-weight: bold;
-    color: ${({selected}) => selected ? 'black' : 'lightGray'};
+    color: ${({selected}) => selected ? 'black' : '#777777'};
 `;
 
 const Troposfera = styled(Layer)`
