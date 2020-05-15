@@ -1,10 +1,10 @@
 export class AsyncCall {
     customAction({ position }) {
         return new Promise(function(resolve) {
-            const seconds = Math.floor(Math.random() * 4);
+            const milliSeconds = Math.floor(Math.random() * 4) * 100;
             console.log('position', position);
-            console.log('seconds', seconds);
-            setTimeout(() => resolve(position), seconds * 1000);
+            console.log('seconds', milliSeconds);
+            setTimeout(() => resolve(position), milliSeconds);
         });
     }
 }
