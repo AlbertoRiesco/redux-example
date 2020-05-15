@@ -45,11 +45,11 @@ const Exosfera = styled(Layer)`
 const Atmosphere = ({ layerPosition }) => {
     return (
         <Container>
-            <Troposfera selected={layerPosition === 0}>Troposfera</Troposfera>
-            <Estratosfera selected={layerPosition === 1}>Estratosfera</Estratosfera>
-            <Mesosfera selected={layerPosition === 2}>Mesosfera</Mesosfera> 
-            <Ionosfera selected={layerPosition === 3}>Ionosfera</Ionosfera> 
-            <Exosfera selected={layerPosition === 4}>Exosfera</Exosfera>
+            <Troposfera selected={layerPosition === 0}>🚀 Troposfera</Troposfera>
+            <Estratosfera selected={layerPosition === 1}>🚀 Estratosfera</Estratosfera>
+            <Mesosfera selected={layerPosition === 2}>🚀 Mesosfera</Mesosfera>
+            <Ionosfera selected={layerPosition === 3}>🚀 Ionosfera</Ionosfera>
+            <Exosfera selected={layerPosition === 4}>🚀 Exosfera</Exosfera>
             <Image src={atm} alt='' />
         </Container>
     );
